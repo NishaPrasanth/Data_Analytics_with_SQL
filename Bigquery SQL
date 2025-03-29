@@ -1,0 +1,118 @@
+# Data_Analytics_in_bigquery_SQL
+## 1. Project Overview
+
+***Project Name:*** ***Analysing E-commerce data in bigquery GCP platform*** 
+
+***Dataset Name:*** ***Public Dataset: The Look E-commerce***  Link : https://console.cloud.google.com/bigquery?ws=!1m4!1m3!3m2!1sbigquery-public-data!2sthelook_ecommerce
+
+***Objective:*** The objective is to understand customer behavior, optimize sales strategies, and improve business operations by tracking key metrics, identifying trends, and uncovering areas for improvement
+
+
+
+## 2. Data Sources  
+ID : bigquery-public-data.thelook_ecommerce
+
+| Table Name               | Description                    |
+|--------------------------|--------------------------------|
+| distribution_center      | Number of rows 10              |
+| events                   | Number of rows 2,422,740       |
+| inventory_items          | Number of rows 488,990         |
+| order_items              | Number of rows 181,065         |
+| orders                   | Number of rows 124,811         |
+| Products                 | Number of rows 29,120          |
+| users                    | Number of rows 100,000         |
+
+
+
+## 3.Extracting tables from public dataset to Bigquery table
+
+step 1: Open the **bigquery sandbox**  and create a **Project file**.
+
+step 2: after opening the bigquery console click on the ***+ Add data***option present on the ***Explore*** panel.
+
+Step 3: In **Add data** screen click on the **public datasets** option or type public dataset.
+
+step 4: In public datasets there will be a **search marketplace**, type  the dataset name **"thelookEcommerce"**
+
+step 5: there will be a product details of the data click on the **view datasets** option.
+
+step 6: the dataset will be visible in the **explore panel** under **bigquery public data**.
+
+step 7: select the dataset under the dataset there will be 7 table. select each table to explore the table **schema, details, preview**.
+
+step 8: Now extract the tables from public to local project file as **bigquery tables** by creating a dataset under a projectfile.
+
+step 9: this can be done as by selecting **search query** option above the table information.The **untitled query** space opens to query the table. use the below statement to select the whole table to view. 
+
+
+```
+SELECT * FROM `bigquery-public-data.thelook_ecommerce.distribution_centers`
+
+``` 
+Step 7: Select the needed columns.The result will be viewed down as query result.Save the results by clicking the **Save results -> bigquerytable**.
+
+step 8: **Destination** screen pops up where type **file name ,the dataset name and table name** and click **Save**. the table with selected columns save in the local repository for analysis.
+
+Use the following methods to extract all the tables to the local project file. 
+
+## 4. Data Profiling and Quality Check
+
+After saving all the tables to the local file. check for the duplicates,missing values in the table.
+
+1. Checking Null
+
+* Select the distribution table and observe the column names. select the search query and type the below code to check for null count in each row of selected column.
+
+   ```
+   SELECT COUNT(*) AS null_count
+FROM `my-project-001-415805.Ecommerce.Distribution_center` 
+WHERE name IS NULL 
+
+```
+
+<img width="886" alt="image" src="https://github.com/user-attachments/assets/1f6c3c5f-b592-453a-a41e-8a9feb0d4a68" />
+
+the result shows with 0 null count. there is no null count.
+
+*Events table.
+```
+SELECT COUNT(*) AS null_count
+FROM `my-project-001-415805.Ecommerce.events_data`where event_type IS  NULL
+
+```
+
+<img width="899" alt="image" src="https://github.com/user-attachments/assets/8e53e974-6dee-4376-8cb0-7bac68caaaa6" />
+
+
+the result shows with 0 null count. there is no null count.
+
+*inventory_items table.
+
+while exploring the inventory items table. all other columns except sold_at has no null count.
+the sold_at column has data of only sold products and there is null value in unsold products.So, we keep the null count as unsold data count
+
+```
+SELECT COUNT(*) AS null_count
+FROM `my-project-001-415805.Ecommerce.inventory_items` 
+WHERE created_at IS NULL
+```
+
+```
+SELECT  COUNT(*) AS unsold,
+FROM `my-project-001-415805.Ecommerce.inventory_items` 
+where sold_at is null
+
+```
+
+<img width="658" alt="image" src="https://github.com/user-attachments/assets/f9c4ae00-0148-4104-acdd-c612d36ffb49" />
+
+```
+SELECT  COUNT(*) AS unsold,
+count(*)-count(sold_at) as sold_out
+FROM `my-project-001-415805.Ecommerce.inventory_items` 
+```
+
+<img width="668" alt="image" src="https://github.com/user-attachments/assets/1e63f9e5-9244-4230-bc22-826928821615" />
+
+
+
