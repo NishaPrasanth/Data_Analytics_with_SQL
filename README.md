@@ -35,21 +35,21 @@ ID : bigquery-public-data.thelook_ecommerce
 
 step 1: Open the **bigquery sandbox**  and create a **Project file**.
 
-step 2: after opening the bigquery console click on the ***+ Add data***option present on the ***Explore*** panel.
+step 2: After opening the bigquery console click on the ***+ Add data***option present on the ***Explore*** panel.
 
 Step 3: In **Add data** screen click on the **public datasets** option or type public dataset.
 
 step 4: In public datasets there will be a **search marketplace**, type  the dataset name **"thelookEcommerce"**
 
-step 5: there will be a product details of the data click on the **view datasets** option.
+step 5: There will be a product details of the data click on the **view datasets** option.
 
-step 6: the dataset will be visible in the **explore panel** under **bigquery public data**.
+step 6: The dataset will be visible in the **explore panel** under **bigquery public data**.
 
-step 7: select the dataset under the dataset there will be 7 table. select each table to explore the table **schema, details, preview**.
+step 7: Select the dataset under the dataset there will be 7 table. select each table to explore the table **schema, details, preview**.
 
 step 8: Now extract the tables from public to local project file as **bigquery tables** by creating a dataset under a projectfile.
 
-step 9: this can be done as by selecting **search query** option above the table information.The **untitled query** space opens to query the table. use the below statement to select the whole table to view. 
+step 9: This can be done as by selecting **search query** option above the table information.The **untitled query** space opens to query the table. use the below statement to select the whole table to view. 
 
 
 ```
@@ -59,7 +59,7 @@ SELECT * FROM `bigquery-public-data.thelook_ecommerce.distribution_centers`
 
 Step 7: Select the needed columns.The result will be viewed down as query result.Save the results by clicking the **Save results -> bigquerytable**.
 
-step 8: **Destination** screen pops up where type **file name ,the dataset name and table name** and click **Save**. the table with selected columns save in the local repository for analysis.
+step 8: **Destination** screen pops up and where type **file name ,the dataset name and table name** and click **Save**. the table with selected columns save in the local repository for analysis.
 
 Use the following methods to extract all the tables to the local project file. 
 
@@ -494,7 +494,7 @@ SELECT extract(year from created_at) as year, country,state,count(distinct id) a
 
 
 
-* ## 8. Visualisation Using PowerBi
+ ## 8. Visualisation Using PowerBi
 
 We can directly import data of bigquery into power bi desktop.
 
