@@ -275,12 +275,12 @@ SELECT a.user_id,a.order_id,a.created_at,a.num_of_item,a.status,
 b.product_id,b.sale_price,
 FROM `my-project-001-415805.Ecommerce.order_data` a 
 JOIN `my-project-001-415805.Ecommerce.order_2` b on a.order_id = b.order_id
+
 ```
 
 
 
 <img width="740" alt="image" src="https://github.com/user-attachments/assets/86144515-ae37-45a7-9e66-8d88cad3b1e3" />
-
 
 
 
@@ -294,6 +294,7 @@ JOIN `my-project-001-415805.Ecommerce.order_2` b on a.order_id = b.order_id
 ```
 SELECT count(id)as total_center
 FROM `my-project-001-415805.Ecommerce.Distribution_center`
+
 ```
 there are total 10 centers 
 
@@ -306,7 +307,6 @@ FROM `my-project-001-415805.Ecommerce.Distribution_center`
 
 
 <img width="718" alt="image" src="https://github.com/user-attachments/assets/797a25e9-4cae-4d4e-a95e-b59f20d90846" />
-
 
 
 
@@ -326,7 +326,11 @@ group by year
 order by  year DESC
 
 ```
+
+
 <img width="617" alt="image" src="https://github.com/user-attachments/assets/97fc8cf4-85b2-4890-9a95-85f91e606b66" />
+
+
 
 ```
 SELECT extract(year from created_at) as year,
@@ -340,7 +344,11 @@ SELECT extract(year from created_at) as year,
 FROM `my-project-001-415805.Ecommerce.inventory_items` 
 group by year,center
 order by year,center
+
+
 ```
+
+
 
 
 <img width="623" alt="image" src="https://github.com/user-attachments/assets/0507322f-4d2f-43f9-9792-71aeb134d1b8" />
@@ -348,17 +356,24 @@ order by year,center
 
 
 
+
 * **Events Data Summary**
+
   
 ```
   select event_type,
 count(id) as total_events, round(avg(sequence_number)) as sequence,
 FROM `my-project-001-415805.Ecommerce.events_data` 
 group by event_type
+
 ```
 
 
+
+
 <img width="616" alt="image" src="https://github.com/user-attachments/assets/2e34e34e-0bc5-4702-b1ee-594b2b407ff5" />
+
+
 
 ```
 select state,city, count(*) as total_events
@@ -366,32 +381,42 @@ FROM `my-project-001-415805.Ecommerce.events_data`
 group by state,city 
 order by total_events desc
 limit 10
+
 ```
+
+
 <img width="645" alt="image" src="https://github.com/user-attachments/assets/26f9b221-9eb5-4236-a3b8-57b2f3d1c164" />
+
+
 
 ```
 select traffic_source, count(*) as total_events
 FROM `my-project-001-415805.Ecommerce.events_data` 
 group by traffic_source 
 order by total_events desc
+
 ```
+
+
 <img width="620" alt="image" src="https://github.com/user-attachments/assets/9fa1be0b-815b-4db3-9262-9e6b3c531cdb" />
 
 
 
 
 * ***Order Summary***
+
+
 ```
 SELECT  status ,extract(year from created_at) as year ,
         count(order_id) as total_orders,
         FROM `my-project-001-415805.Ecommerce.order_status` 
         group by status,year
         order by total_orders desc
+
 ```
 
 
 <img width="608" alt="image" src="https://github.com/user-attachments/assets/ee701a93-6e4a-4382-b9af-26a71a895519" />
-
 
 
 
@@ -414,6 +439,7 @@ order by total_products desc
 
 * ***User Data Summary***
   
+  
 1.**Top 50 users**
 
    
@@ -429,14 +455,20 @@ FROM `my-project-001-415805.Ecommerce.combined_2`
 group by user_id1,year_subscribed,country
 order by total_orders_done desc
 limit 50
+
 ```
 
+
 <img width="609" alt="image" src="https://github.com/user-attachments/assets/96efc7f6-66e5-40fb-86e6-9933914e5f03" />
+
+
 
 ## 7. Analysing Trends and Patterns 
 
 
+
 1.**YOY Change :**
+
    
   ```
   SELECT 
@@ -450,10 +482,11 @@ limit 50
   ) AS yoy_sale_price_percent
 FROM `my-project-001-415805.Ecommerce.yearly Revenue`
 ORDER BY year
+
 ```
 
-<img width="631" alt="image" src="https://github.com/user-attachments/assets/06b639f9-70d6-4939-a394-ed02a8b99617" />
 
+<img width="631" alt="image" src="https://github.com/user-attachments/assets/06b639f9-70d6-4939-a394-ed02a8b99617" />
 
 
 
@@ -507,9 +540,11 @@ We can directly import data of bigquery into power bi desktop.
 * Manage the relationship of tables.
 * Transform the tables.
 * Create visuals in report tab.
+  
 ( there are two type of mode used in powerbi to connect database. "Import" copies data into the Power BI file for offline analysis, while "Direct Query" connects to the data source directly)
 
 ## Report
+
 
 ![Screenshot 2025-04-09 125700](https://github.com/user-attachments/assets/7b2e5ebd-0d37-49aa-96e5-d613cbc4c617)
 
