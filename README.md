@@ -221,48 +221,63 @@ SELECT id, COUNT(*) ,
  FROM `my-project-001-415805.Ecommerce.Distribution_center` 
  GROUP BY id
 HAVING COUNT(*) > 1
+
 ```
 2. no duplicated in events data
+   
 ```   
- SELECT id, COUNT(*) 
+SELECT id, COUNT(*) 
 FROM `my-project-001-415805.Ecommerce.events_data`
 GROUP BY id
 HAVING COUNT(*) > 1
+
 ```
+
 3.no duplicated in inventory_items data
+
 ```
- SELECT id, COUNT(*) 
+SELECT id, COUNT(*) 
 FROM `my-project-001-415805.Ecommerce.inventory_items`
 GROUP BY id
 HAVING COUNT(*) > 1
+
 ```
+
 4.no duplicated in order_items data 
+
 ```
 SELECT id, COUNT(*) 
  FROM `my-project-001-415805.Ecommerce.order_2` 
  GROUP BY id
 HAVING COUNT(*) > 1
+
 ```
 5.no duplicated in orders data 
 
-```SELECT order_id, COUNT(*) 
+```
+SELECT order_id, COUNT(*) 
  FROM `my-project-001-415805.Ecommerce.order_data` 
  GROUP BY order_id
 HAVING COUNT(*) > 1
+
 ```
 6.no duplicated in products data 
+
 ```
 SELECT id, COUNT(*) 
  FROM `my-project-001-415805.Ecommerce.product_data` 
  GROUP BY id
 HAVING COUNT(*) > 1
+
 ```
 7.no duplicated in  user data 
+
 ```
 SELECT id, COUNT(*) 
  FROM `my-project-001-415805.Ecommerce.user_data` 
  GROUP BY id
 HAVING COUNT(*) > 1
+
 ```
 
 
